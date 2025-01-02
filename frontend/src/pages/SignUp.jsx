@@ -27,8 +27,6 @@ const SignUp = () => {
         try {
             const { data } = await axios.post(backendUrl + '/api/user/login', { email, password });
     
-            console.log("Response data:", data);  
-    
             if (data.success) {
                
                 localStorage.setItem('token', data.token);
@@ -37,9 +35,6 @@ const SignUp = () => {
                 
                 setToken(data.token);
                 setisLoggedIn(true); 
-    
-                console.log("After storing userId in localStorage:", localStorage.getItem('userId'));
-    
                
                 navigate('/');
             } else {
