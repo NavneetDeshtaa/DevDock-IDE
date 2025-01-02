@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "echo 'No build step for backend'"
   },
   "author": "",
   "license": "ISC",
