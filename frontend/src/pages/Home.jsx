@@ -137,15 +137,17 @@ const Home = () => {
     <>
       <Navbar isGridLayout={isGridLayout} setIsGridLayout={setIsGridLayout} />
 
-      <div className='flex items-center justify-between px-[100px] my-[40px]'>
+      <div className='flex items-center justify-between px-4 md:px-8 lg:px-20 my-4 md:my-8'>
         <h2 className='text-2xl text-black'>
           {userLoading ? "Loading..." : `Hi, ${userData ? userData.name : "User"} 👋`}
         </h2>
-        <div className='flex items-center gap-1'>
-          <div className="inputBox !w-[350px]">
-            <input type="text" placeholder='Search Here... !' />
+        <div className='flex items-center gap-2'>
+          <div className="inputBox w-full md:w-[350px]">
+            <input type="text" placeholder='Search Here... !' className='p-2 w-full rounded-md' />
           </div>
-          <button onClick={() => { setIsCreateModelShow(true) }} className='btnBlue rounded-[5px] mb-4 text-[20px] !p-[5px] !px-[10px]'>+</button>
+          <button onClick={() => { setIsCreateModelShow(true) }} className='btnBlue rounded-[5px] mb-4 text-[20px] py-2 px-4'>
+            +
+          </button>
         </div>
       </div>
 
@@ -157,7 +159,7 @@ const Home = () => {
           <>
             {
               isGridLayout ? 
-                <div className='grid px-[100px]'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 md:px-8 lg:px-20'>
                   {data.length > 0 ? (
                     data.map((item, index) => (
                       <GridCard key={index} item={item} onClick={() => handleProjectClick(item._id)} />
@@ -167,7 +169,7 @@ const Home = () => {
                   )}
                 </div>
                 : 
-                <div className='list px-[100px]'>
+                <div className='list px-4 md:px-8 lg:px-20'>
                   {data.length > 0 ? (
                     data.map((item, index) => (
                       <ListCard key={index} item={item} onClick={() => handleProjectClick(item._id)} />
@@ -184,7 +186,7 @@ const Home = () => {
       {/* Create New Project Modal */}
       {isCreateModelShow && (
         <div className="createModelCon fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-[rgb(0,0,0,0.1)] flex items-center justify-center">
-          <div className="createModel w-[25vw] h-[27vh] shadow-lg shadow-black/50 bg-[#141414] rounded-[10px] p-[20px]">
+          <div className="createModel w-[80%] sm:w-[60%] md:w-[40%] lg:w-[25vw] h-[27vh] shadow-lg shadow-black/50 bg-[#141414] rounded-[10px] p-[20px]">
             <h3 className='text-2xl'>Create New Project</h3>
             <div className="inputBox !bg-[#202020] mt-4">
               <input
@@ -192,11 +194,12 @@ const Home = () => {
                 value={projTitle}
                 type="text"
                 placeholder='Project Title'
+                className="w-full p-2 rounded-md"
               />
             </div>
-            <div className='flex items-center gap-[10px] w-full mt-2'>
-              <button onClick={createProj} className='btnBlue rounded-[5px] w-[49%] mb-4 !p-[5px] !px-[10px] !py-[10px]'>Create</button>
-              <button onClick={() => { setIsCreateModelShow(false) }} className='btnBlue !bg-[#1A1919] rounded-[5px] mb-4 w-[49%] !p-[5px] !px-[10px] !py-[10px]'>Cancel</button>
+            <div className='flex items-center gap-2 w-full mt-4'>
+              <button onClick={createProj} className='btnBlue rounded-[5px] w-[49%] mb-4 py-2 px-4'>Create</button>
+              <button onClick={() => { setIsCreateModelShow(false) }} className='btnBlue !bg-[#1A1919] rounded-[5px] mb-4 w-[49%] py-2 px-4'>Cancel</button>
             </div>
           </div>
         </div>
